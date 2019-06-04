@@ -68,8 +68,8 @@ showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
   function(response) {
-    buildAndShowHomeHTML(response);    //document.querySelector("#main-content").innerHTML = response;    
-  }, // ***** <---- TODO: STEP 1: Substitute [...] ******
+    buildAndShowHomeHTML(response);       
+  },
   true); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -87,7 +87,6 @@ function buildAndShowHomeHTML (categories) {
       var chosenCategoryShortName = "'" + chosenCategory.short_name + "'";
       const randomCategoryShortName = "randomCategoryShortName";
       var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, randomCategoryShortName, chosenCategoryShortName);
-      console.log(homeHtmlToInsertIntoMainPage);
       insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
     },
   false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
@@ -116,7 +115,6 @@ dc.loadMenuCategories = function () {
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
 dc.loadMenuItems = function (categoryShort) {
-  console.log("test", categoryShort);
   showLoading("#main-content");
   $ajaxUtils.sendGetRequest(
     menuItemsUrl + categoryShort,
